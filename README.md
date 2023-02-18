@@ -26,15 +26,15 @@ $iconProcessor = new IconProcessor($icon, $config, $sourceFile);
 ```
 
 The `optimize` method does the following things by default:
-* it removes the following attributes from the svg string
+* it removes the following attributes from the svg
     - 'width', 'height', 'class', 'style', 'id',
 * if in the config provided `is-outline` is set as `true`
-    - if present - it sets the `fill` attribute as `none`
-    - if present - it sets the `stroke` attribute as `currentColor`
+    - if `fill` attribute exists - it will updated to `none`
+    - if `stroke` attribute exists - it will updated to `currentColor`
 * if in the config provided `is-solid` is set as `true`
-    - if present - it sets the `fill` attribute as `currentColor`
+    - if `fill` attribute exists - it will updated to `currentColor`
 * if in the config provided `custom-attributes` is set`
-    - it will set the attributes to the svg string
+    - it will set the attributes to the svg
 * optionally it provides 2 callable methods `pre` & `post`
     - both callback receives the `$svgEL` as the `DOMDocument` - its the DOMDocument instance of the current icon
     - `pre` can be used if you have to perform some operation before Processor does the default processing
