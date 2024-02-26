@@ -6,15 +6,11 @@
         {
             "type": "git",
             "url": "git@github.com:codeat3/inlinestyle.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:swapnilsarwe/laravel-page-speed.git"
         }
     ],
     "require": {
         "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
-        "renatomarinho/laravel-page-speed": "dev-l11-support",
+        "swapnilsarwe/laravel-page-speed": "dev-l11-support",
         "symfony/process": "^5.0|^6.0",
         "symfony/filesystem": "^5.0|^6.0",
         "codeat3/inlinestyle": "^2.0"
