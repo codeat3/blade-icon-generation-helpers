@@ -5,7 +5,6 @@ namespace Codeat3\BladeIconGeneration;
 use DOMDocument;
 use Illuminate\Support\Str;
 use Codeat3\InlineStyle\InlineStyle;
-use Codeat3\LaravelPageSpeed\Middleware\CollapseWhitespace;
 use Codeat3\BladeIconGeneration\Exceptions\InvalidFileExtensionException;
 
 class IconProcessor
@@ -103,7 +102,7 @@ class IconProcessor
         }
 
         $this->svgLine = preg_replace('/\<\?xml.*\?\>/', '', $this->svgLine);
-        $this->svgLine = (new CollapseWhitespace())->apply($this->svgLine);
+        $this->svgLine = $this->collapseWhitespace()->apply($this->svgLine);
         file_put_contents($destinationPath, $this->svgLine);
     }
 
@@ -226,5 +225,19 @@ class IconProcessor
         $this->svgDoc = $htmlDoc->getDomObject();
 
         return $this;
+    }
+
+    /**
+     * codeat3/laravel-page-speed 2.5 ships the upstream namespace
+     * (RenatoMarinho\LaravelPageSpeed) while 2.4 and earlier use
+     * Codeat3\LaravelPageSpeed — support both.
+     */
+    protected function collapseWhitespace(): object
+    {
+        if (class_exists(\Codeat3\LaravelPageSpeed\Middleware\CollapseWhitespace::class)) {
+            return new \Codeat3\LaravelPageSpeed\Middleware\CollapseWhitespace();
+        }
+
+        return new \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace();
     }
 }
