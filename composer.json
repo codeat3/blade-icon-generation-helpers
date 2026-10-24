@@ -8,7 +8,7 @@
         "symfony/process": "^5.0|^6.0|^7.0",
         "symfony/filesystem": "^5.0|^6.0|^7.0",
         "codeat3/inlinestyle": "^2.1",
-        "codeat3/laravel-page-speed": "^2.5"
+        "codeat3/laravel-page-speed": "^2.6"
     },
     "require-dev": {
         "codeat3/phpcs-styles": "^1.0"
